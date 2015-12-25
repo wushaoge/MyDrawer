@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btnRight;
 
 
+    private Button btnSearch;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         btnLeft = (Button)findViewById(R.id.btn_left);
         btnRight = (Button)findViewById(R.id.btn_right);
 
+
+        btnSearch = (Button)findViewById(R.id.btn_search);
 
 
         btnBottom.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(context,MyDrawerRightActivity.class));
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context,MyDrawerRightSearchActivity.class));
             }
         });
 

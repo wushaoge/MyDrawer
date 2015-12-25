@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wsgmac1221.demo.view.MyDrawer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/md_mydrawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/violet"
+    app:dragtype="right"
+    app:isOpen="false"
+    app:content="@+id/ll_btn"
+    app:drag="@+id/ll_drag_main"
+    app:handler="@+id/tv_search"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/navajowhite"
+        >
+
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="打开"
+            android:background="@color/palevioletred"
+            />
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="关闭"
+            android:layout_marginLeft="20dp"
+            android:background="@color/chocolate"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_drag_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shaper_search"
+        >
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="搜索"
+            />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@color/thistle"
+            />
+
+    </LinearLayout>
+
+
+
+</com.wsgmac1221.demo.view.MyDrawer>

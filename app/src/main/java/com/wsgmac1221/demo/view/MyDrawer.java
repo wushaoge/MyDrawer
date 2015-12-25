@@ -83,13 +83,13 @@ public class MyDrawer extends ViewGroup {
 
         public void close(); //关闭
 
-
     }
 
+    //打开
     public void open(){
         defaultDragHelper.open();
     }
-
+    //关闭
     public void close(){
         defaultDragHelper.close();
     }
@@ -106,6 +106,19 @@ public class MyDrawer extends ViewGroup {
         this.myDrawerListener = myDrawerListener;
     }
 
+    public View getHandlerView(){
+        if(mHandlerID != -1){
+            return mHandler;
+        }
+        return null;
+    }
+
+    public View getDragContextView(){
+        if(mDragContentViewID != -1){
+            return mDragContextView;
+        }
+        return null;
+    }
 
 
     public MyDrawer(Context context) {
@@ -348,7 +361,7 @@ public class MyDrawer extends ViewGroup {
 //        Log.e(TAG,"initRight===="+initRight);
 //        Log.e(TAG,"initTop===="+initTop);
 //        Log.e(TAG, "initBottom====" + initBottom);
-        mDragContextView.layout(intitLeft, initTop, initRight, initBottom);
+         mDragContextView.layout(intitLeft, initTop, initRight, initBottom);
 
 
     }
