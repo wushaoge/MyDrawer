@@ -1,0 +1,18 @@
+<resources>
+    <declare-styleable name="MyDrawer">
+        <attr name="content" format="reference" /> //主体view
+        <attr name="drag" format="reference" />    //拖动view
+        <attr name="handler" format="reference" /> //手柄view
+        <attr name="isOpen" format="boolean" /> //是否打开
+        <attr name="dragtype"/> //拖动方向
+    </declare-styleable>
+
+
+    <attr name="dragtype">
+        <enum name="left" value="0"/> //从左边滑出来
+        <enum name="right" value="1"/> //从右边滑出来
+        <enum name="top" value="2"/> //从顶部滑出来
+        <enum name="bottom" value="3"/> //从底部滑出来
+    </attr>
+
+</resources>

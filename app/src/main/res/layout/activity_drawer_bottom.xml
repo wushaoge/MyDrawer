@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wsgmac1221.demo.view.MyDrawer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/md_mydrawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/violet"
+    app:dragtype="bottom"
+    app:isOpen="false"
+    app:content="@+id/ll_btn"
+    app:drag="@+id/ll_drag_main"
+    app:handler="@+id/rl_head"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/navajowhite"
+        >
+
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="打开"
+            android:background="@color/palevioletred"
+            />
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="关闭"
+            android:layout_marginLeft="20dp"
+            android:background="@color/chocolate"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_drag_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
+
+
+        <RelativeLayout
+            android:id="@+id/rl_head"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/lightcoral"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请登录"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:textColor="@color/tan"
+                android:textSize="20sp"
+                />
+
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/close"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            >
+
+            <Button
+                android:id="@+id/btn_weibo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/lightskyblue"
+                android:text="微博登陆"
+                />
+
+            <Button
+                android:id="@+id/btn_qq"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/palegoldenrod"
+                android:text="QQ登陆"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</com.wsgmac1221.demo.view.MyDrawer>
