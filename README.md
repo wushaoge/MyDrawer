@@ -1,9 +1,11 @@
 # MyDrawer
 手撸一个slidingdrawer简易库,实现基本功能
 
+![image](https://github.com/wushaoge/MyDrawer/blob/master/mydrawer.gif)
+
 以下为自定义属性
 
-  <declare-styleable name="MyDrawer">
+    <declare-styleable name="MyDrawer">
         <attr name="content" format="reference" /> //主体view  必须指定
         <attr name="drag" format="reference" />    //拖动view  必须指定
         <attr name="handler" format="reference" /> //手柄view  必须包含在drag里面，可以为空
