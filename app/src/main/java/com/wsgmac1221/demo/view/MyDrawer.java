@@ -37,6 +37,7 @@ public class MyDrawer extends ViewGroup {
 
     /**  自定义属性CUSTOM START **/
     private boolean isOpen = true; //是否打开
+    private boolean isKickBack = false;
     private int dragType = 3; //默认从下往上滑
     /**  自定义属性CUSTOM END **/
 
@@ -69,6 +70,8 @@ public class MyDrawer extends ViewGroup {
 
     private MyDrawerListener myDrawerListener = null;
 
+    private MyKickBackListener myKickBackListener;
+
     //初始化拖动view的坐标
     private int intitLeft = 0;
     private int initRight = 0;
@@ -78,10 +81,23 @@ public class MyDrawer extends ViewGroup {
 
 
     public interface MyDrawerListener{
+        /**
+         * 隐藏的页面被打开
+         */
+        void open(); //打开
 
-        public void open(); //打开
+        /**
+         * 隐藏的页面被关闭
+         */
+        void close(); //关闭
 
-        public void close(); //关闭
+    }
+
+    public interface MyKickBackListener{
+        /**
+         * 回弹的回调
+         */
+        void kickBack(); //回弹
 
     }
 
@@ -104,6 +120,10 @@ public class MyDrawer extends ViewGroup {
 
     public void setMyDrawerListener(MyDrawerListener myDrawerListener) {
         this.myDrawerListener = myDrawerListener;
+    }
+
+    public void setMyKickBackListener(MyKickBackListener myKickBackListener){
+        this.myKickBackListener = myKickBackListener;
     }
 
     public View getHandlerView(){
@@ -438,6 +458,8 @@ public class MyDrawer extends ViewGroup {
                 if(top<=critical){
                     //打开
                     open();
+                    isKickBack = true;
+                    Log.d(TAG, "onViewReleased: 回弹了");
                 }else{
                     close();
                 }
@@ -490,6 +512,28 @@ public class MyDrawer extends ViewGroup {
 
         @Override
         public void onViewDragStateChanged(int state) {
+//            Log.d(TAG, "onViewDragStateChanged: state"+state);
+//            Log.d(TAG, "onViewDragStateChanged: mDragContextView.getTop()"+mDragContextView.getTop());
+//            Log.d(TAG, "onViewDragStateChanged: (myHeight-dragContentHeight)"+(myHeight-dragContentHeight));
+            if (state == 0 && mDragContextView.getTop()-(myHeight-dragContentHeight)<100) {
+                if(myDrawerListener != null && getIsOpen() == false){
+                    myDrawerListener.open();
+                }
+                isOpen = true;
+                Log.d(TAG, "onViewDragStateChanged: 打开了");
+            }else if (state == 0 && mDragContextView.getTop() > myHeight-dragContentHeight){
+                Log.d(TAG, "onViewDragStateChanged: 关闭了");
+                if(myDrawerListener != null && getIsOpen() == true){
+                    myDrawerListener.close();
+                }
+                isOpen = false;
+            }
+            if(state == 0 && isKickBack){
+                if (myKickBackListener != null) {
+                    myKickBackListener.kickBack();
+                }
+                isKickBack = false;
+            }
             super.onViewDragStateChanged(state);
         }
 
@@ -530,11 +574,6 @@ public class MyDrawer extends ViewGroup {
                 finalTop = myHeight - dragContentHeight;
             }
 
-            if(myDrawerListener != null && getIsOpen() == false){
-                myDrawerListener.open();
-            }
-
-            isOpen = true;
             viewDragHelper.smoothSlideViewTo(mDragContextView,finalLeft,finalTop);
             invalidate();
         }
@@ -564,11 +603,6 @@ public class MyDrawer extends ViewGroup {
                 finalTop = myHeight - handlerHeight;
             }
 
-            if(myDrawerListener != null && getIsOpen() == true){
-                myDrawerListener.close();
-            }
-
-            isOpen = false;
             viewDragHelper.smoothSlideViewTo(mDragContextView,finalLeft,finalTop);
             invalidate();
         }
